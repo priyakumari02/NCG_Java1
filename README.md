@@ -1,4 +1,4 @@
-# Building RESTful WS using Spring Boot
+# Java
 
 Banuprakash C
 
