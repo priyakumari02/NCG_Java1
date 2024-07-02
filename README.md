@@ -152,8 +152,63 @@ Mobile m = (Mobile) p; // down casting
 m.getConnectivity(); //work
 ```
 
+* Object is the root class; every class inherits from Object class
+* extends keyword for specialization
+* every instance method is virtual
+* Java doesn't support multiple inheritance
 
+```
 
+public class Account {
+    private double balance; // state, instance variable
+    private static int count; //state of class
+
+    public Account() {
+        count++;
+    }
+    public void deposit(double amt) {
+        this.balance += amt;
+    }
+
+    public double getBalance() {
+        return this.balance;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+}
+
+* How many instances of Account is created...
+
+swethaAcc.getCount(); //10
+
+rahulAcc.getCount(); //10
+
+Account.getCount(); // 10
+```
+
+Realization relationship
+A component will realize the behaviour specified by other component in order to communicate
+
+interface ProductDao {
+    void addProduct(Product p);
+    Product getProduct(int id);
+}
+
+Why program to interface?
+1) DESIGN
+2) IMPLEMENTATION
+3) INTEGRATION
+4) TESTING
+5) Loose Coupling code
+
+Visibility:
+private, public, protected and default
+protected --> package + private and visbile to inherited class which can be in other package
+* All members in a class are of default scope [package private]
+Visbile within a package
+* All members in a interface are public by default [ visible across packages]
 
 
 
