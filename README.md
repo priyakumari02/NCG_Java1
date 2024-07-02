@@ -139,6 +139,8 @@ transferFunds(Account fromAcc, Account toAcc, double amt)
 
 ```
 
+Inheritance Code:
+```
 1)Product p = new Product();
 p.isExpensive(); // valid
 
@@ -148,6 +150,12 @@ p.getConnectivity(); // fails
 
 Mobile m = (Mobile) p; // down casting
 m.getConnectivity(); //work
+```
+
+
+
+
+
 
 
 
