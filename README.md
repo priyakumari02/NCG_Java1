@@ -50,3 +50,74 @@ bash terminal> mysql -u "root" -p
 mysql> exit
 
 ```
+
+OOP
+
+SOLID Design principle
+
+S -> Single Responsibility
+O --> Open Close Principle
+CLosed for Change and Open for Extension
+L --> Liskov Substitution Principle
+Applied for Generalization and Specialization relationship
+I --> Interface seggregation
+D --> Dependecy Injection
+
+Java?
+Technology
+Platform --> Java Runtime Environment
+JRE --> JVM  + classloader
+
+Compile time environment
+
+Source Code ===> Compiler ---> Bytecode
+Java Programming language --> javac --> bytecode
+Kotlin --> kotlin compiler ---> bytecode
+Groovy --> groovy compiler --> bytecode
+
+ClassLoader:
+findLoadedClass()
+loadClass()  --> Classpath
+findSystemClass()
+defineClass() --> Convert bytecode to system specific data structure
+
+```
+
+public class Account {
+    private double balance;
+
+    public void deposit(double amt) {
+        this.balance += amt;
+    }
+
+    public double getBalance() {
+        return this.balance;
+    }
+}
+
+
+public class AccountExample {
+    public static void main(String args[]) {
+        Account annaAccount = new Account(); (1)
+        annaAccount.deposit(5000); (2)
+        Account rogerAccount = new Account();
+        rogerAccount.deposit(1200);
+    }
+}
+
+annaAccount.deposit(5000);
+
+deposit(annaAccount, 5000);
+
+```
+
+
+
+
+
+
+
+
+
+
+
