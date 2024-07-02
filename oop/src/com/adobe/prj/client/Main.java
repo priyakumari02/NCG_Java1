@@ -14,12 +14,12 @@ public class Main {
         products[2] = new Tv(61, "Sony Bravia", 2_45_000.00, "OLED");
         products[3] = new Mobile(65, "Oppo", 8900, "4G");
         products[4] = new Mobile(90, "OnePlus 14", 78000, "4G");
-
+//        products[5] = new Product();
         printExpensiveProducts(products);
        // printDetails(products);
         printDetailsOCP(products);
     }
-
+    //OCP
     private static void printDetailsOCP(Product[] products) {
         for(Product p : products) {
           Method[] methods =  p.getClass().getMethods();
