@@ -12,8 +12,8 @@ public class MobileClient {
 //        MobileDao mobileDao = new MobileDaoDbImpl();
 //        MobileDao mobileDao = new MobileDaoFileImpl();
         MobileDao mobileDao = MobileDaoFactory.getMobileDao();
-        mobileDao.addMobile(m);
-
-
+        if(mobileDao != null) {
+            mobileDao.addMobile(m);
+        }
     }
 }

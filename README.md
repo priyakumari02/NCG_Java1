@@ -210,8 +210,68 @@ protected --> package + private and visbile to inherited class which can be in o
 Visbile within a package
 * All members in a interface are public by default [ visible across packages]
 
+Class.forName("java.util.Date");  // loads the class into JVM
+
+Task based on Association:
+```
+Person class with --> name and weight
+Lift / Elevator
+    * stops
+    * capacity 5 persons
+    * people[] 
+    * enterPerson(Person p);
+    * exitPerson(Person p);
+    * moveUp()
+    * moveDown()
+
+Rules: 
+   * Max people
+   * check stops and control moveUp() or moveDown()
+   * At any point get the status of Lift [# no of people, floor]
+```
+
+Note on Exception:
 
 
+Exception: any abnormal condition that arises during program execution
+exceptions can be Error type or exception type
+
+
+Error Type: abnormal condition which can't be resolved during program exection
+StackOverflowError, OutOfMemoryError, ...
+
+Exception type:
+a) CheckedType of Exception
+    generally occur due to reasons --> outside of JVM
+    Compiler enforces us to handle it using try / catch
+b) UncheckedType of exception
+    issues within JVM
+    Should be handled using conditional statement and not try/catch
+
+==============
+
+Data Containers [ java.util package]
+* Array has to be the first choice for data container
+
+Java Collection Framework
+a) interfaces
+b) implementation class
+c) algorthim classes / utility classes
+
+Comparable
+Comparator
+
+Generics
+
+public class Rectangle<T> {
+    T width;
+    T breadth;
+    
+}
+
+Rectangle<Integer> r1 = new Rectangle<>(4,5);
+REctangle<Double> r2 = new Rectangle<>(1.2, 4.5);
+Rectangle<String> r3 = new Rectangle<>("A", "B");
 
 
 
