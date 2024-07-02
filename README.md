@@ -111,11 +111,43 @@ deposit(annaAccount, 5000);
 
 ```
 
+Relationship between Objects:
+1) Generalization and Specialization [isA] --> Inheritance
+2) Realization
+3) Association
+4) Uses A
 
 
+Logical grouping of classes/object
+com.adobe.<<prj>>.entity
 
+1) entity / domain / model
+com.adobe.<<prj>>.dao
+2) DAO --> Data Access Object -- CRUD operations
+AccountDao
+TransactionDao
+CustomerDao
+com.adobe.<<prj>>.service
+3) Service --> Facade on business and DAO
+CustomerService
+AccountService
+transferFunds(Account fromAcc, Account toAcc, double amt)
+4) Business class
+5) UI / Client
+6) Exception
+7) Utility
 
+```
 
+1)Product p = new Product();
+p.isExpensive(); // valid
+
+2) Product p = new Mobile(...); // up casting
+p.isExpensive(); // valid ? --> call isExpensive() of Mobile --> dynamic binding
+p.getConnectivity(); // fails
+
+Mobile m = (Mobile) p; // down casting
+m.getConnectivity(); //work
 
 
 
