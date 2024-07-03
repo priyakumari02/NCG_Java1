@@ -29,12 +29,14 @@ public class JCF {
 //            }
 //        };
 
-        Comparator<Product> nameComparator = new Comparator<Product>() {
-            @Override
-            public int compare(Product p1, Product p2) {
-                return p1.getName().compareTo(p2.getName());
-            }
-        };
+//        Comparator<Product> nameComparator = new Comparator<Product>() {
+//            @Override
+//            public int compare(Product p1, Product p2) {
+//                return p1.getName().compareTo(p2.getName());
+//            }
+//        };
+
+        Comparator<Product> nameComparator = (Product p1, Product p2) -> p1.getName().compareTo(p2.getName());
 
        // Arrays.sort(products);
         Arrays.sort(products, nameComparator);

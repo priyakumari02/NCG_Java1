@@ -263,16 +263,62 @@ Comparator
 
 Generics
 
-public class Rectangle<T> {
+public class Rectangle<T extends Number> {
     T width;
     T breadth;
     
 }
 
+
 Rectangle<Integer> r1 = new Rectangle<>(4,5);
-REctangle<Double> r2 = new Rectangle<>(1.2, 4.5);
+Rectangle<Double> r2 = new Rectangle<>(1.2, 4.5);
 Rectangle<String> r3 = new Rectangle<>("A", "B");
 
+```
 
+Day 2
+
+Java 8 --> FunctionalInterface
+FunctionalInterface: interface for which only one method to be implemented
+
+If we have FunctionalInterface we can use lambda expression instead of Anonymous class to instantiate.
+
+```
+    Anonymous class:
+   Comparator<Product> nameComparator = new Comparator<Product>() {
+            @Override
+            public int compare(Product p1, Product p2) {
+                return p1.getName().compareTo(p2.getName());
+            }
+    };
+
+    Lambda:
+      Comparator<Product> nameComp = (Product p1, Product p2) -> {
+       return p1.getName().compareTo(p2.getName());
+      }
+    Comparator<Product> nameComp = (Product p1, Product p2) -> p1.getName().compareTo(p2.getName());
+
+      Comparator<Product> nameComp = ( p1,  p2) -> p1.getName().compareTo(p2.getName());
+
+```
+
+HashCode:
+1) similar objects should have same hashCode
+2) possibility is objects which are not similar can also have same hashcode [ collision ]
+
+List:
+* ordered collection
+* can have duplicate elements
+* can be re-ordered [ sort, shuffle, reverse]
+* get / add / remove from arbitrary position
+
+Implementation classes for List:
+1) ArrayList
+2) LinkedList
+
+3) Apache Collections
+4) VAVR collection
+
+Set:
 
 
