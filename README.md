@@ -418,4 +418,47 @@ try {
 
 Docker is a platform designed to help developers build, share, and run container applications.
 
-Resume @ 3:50
+```
+mysql>  create database NCG_JAVA;
+mysql> use NCG_JAVA
+
+mysql> create table products (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), price double, quantity int);
+
+
+mysql> insert into products (name, price, quantity) values ('Wacom' , 4500.00, 100);
+
+mysql> insert into products (name, price, quantity) values ('Reynold' , 40.00, 100);
+
+
+mysql> select * from products;
+```
+public interface UserDao {
+    void register(User u) throws PersistenceException;
+}
+
+public class UserDaoMongoImpl implements UserDao {
+
+    public void register(User u) throws PersistenceException {
+    try {
+        // code
+    }catch(MongodbException ex) {
+        throw new PeristenceException("user with email already exists!!!", ex);
+    }
+    }
+}
+
+
+
+
+client:
+
+try {
+    User u = ...
+    userDao.register(u);
+} catch(PersistenceException ex) {
+    ex.printStackTrace();
+    sout(ex.getMessage());
+}
+
+
+
