@@ -352,9 +352,70 @@ Methods of Map:
 2) get(key): value
 3) containsKey(key): boolean
 
-Resume @ 1:45
-Database and Web application
+=================================
+
+Maven / Gradle
+
+Maven is a build automation tool used primarily for Java projects. 
+
+/*
+    multi-line
+*/
+
+// single line
+
+/**
+JavaDoc Comments
+this is for API users
+*/
+
+JDBC --> Java Database Connectivity --> Integration Library
+
+JDBC provides interfaces, implementation classes are provided by database vendors
+
+Step 1:
+establish a database connection
+
+Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+URL:
+jdbc:oracle:thin:@12.2.44.11:1501:/emp_db
+
+jdbc:mysql://15.11.45.1:3306/emp_db
+
+Step 2: Send SQL statements [ DML ]
+a) Statement
+if SQL is fixed and same for all requests
+select * from products
+b) PreparedStatement
+if SQL has IN parameter
+select * from users where username = ? and password = ?
+insert into products values (?, ?, ?, ?);
+
+c) CallableStatement
+
+to invoke stored procedures
+
+call transaction(?,?)
+
+Step 3:
+return values can be int or ResultSet
+int for insert, delete and update statements
+
+Step 4:
+close the connection
+
+finally block 
+
+try {
+
+} catch(SQLException ex) {
+
+} finally {
+    con.close();
+}
 
 
+Docker is a platform designed to help developers build, share, and run container applications.
 
-
+Resume @ 3:50
