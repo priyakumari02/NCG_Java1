@@ -319,6 +319,42 @@ Implementation classes for List:
 3) Apache Collections
 4) VAVR collection
 
+
+HOF: High Order functions:
+1) functions which accept function as argument
+2) function returns a function
+
+Intermediate functions:
+1) filter ---> to get subset based on Predicate [ Predicate.java interface]
+2) map --> to transform the data
+3) skip
+4) limit
+
+Terminal function:
+5) reduce --> to get aggregte [ sum , count, max, ..]
+6) forEach --> iteration
+7) collect 
+
+
+https://rxmarbles.com/
+
+
 Set:
+* unique collection
+* ordering is based on type of container
+* can't be re-ordered
+* no index based operation
+
+HashSet uses hashCode() and equals()
+
+Methods of Map:
+1) put(key, value)
+2) get(key): value
+3) containsKey(key): boolean
+
+Resume @ 1:45
+Database and Web application
+
+
 
 
