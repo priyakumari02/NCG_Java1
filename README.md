@@ -586,4 +586,56 @@ for Bytecode instrumentation
 
 3) CGLib --> for Proxy object
 
+Issue:
+Could not autowire. There is more than one bean of 'BookDao' type.
+Beans:
+bookDaoFileImpl   (BookDaoFileImpl.java) bookDaoJdbcImpl   (BookDaoJdbcImpl.java) 
 
+Solution 1:
+```
+use @Qualifier
+@Autowired
+@Qualifier("bookDaoFileImpl")
+private BookDao bookDao;
+```
+
+Solution 2:
+```
+Make one of the as Primary
+remove @Qualifier
+
+@Repository
+@Primary
+public class BookDaoFileImpl implements BookDao{
+
+@Repository
+public class BookDaoJdbcImpl implements  BookDao{
+
+```
+Solution 3:
+```
+@ConditionalOnMissingBean
+
+@Repository
+@ConditionalOnMissingBean(name = "bookDaoJdbcImpl")
+public class BookDaoFileImpl implements BookDao{
+```
+
+Solution 4:
+using Profile
+```
+@Repository
+@Profile("prod")
+public class BookDaoJdbcImpl implements  BookDao{
+
+@Repository
+@Profile("dev")
+public class BookDaoFileImpl implements BookDao{
+
+application.properties
+spring.profiles.active=prod
+
+OR
+
+java jar app.jar --spring.profiles.active=prod
+```
