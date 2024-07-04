@@ -482,3 +482,9 @@ DELETE --> DELETE
 
 Servlet Containers: Tomcat, Jetty , Netty
 
+
+Run Maven Goals:
+mvn jetty:run
+
+
+
