@@ -486,5 +486,104 @@ Servlet Containers: Tomcat, Jetty , Netty
 Run Maven Goals:
 mvn jetty:run
 
+========================================
+
+Spring Framework 
+
+--> provides lightweight container for building enterpise application.
+--> dependency Injection --> InversionOfControl [ IoC ]
+Spring Core module provides
+* life cycle management of beans
+[ any object managed by spring container is a bean]
+* wires dependencies
+
+Spring container can be created using xml or annotation as metadata.
+
+```
+    interface BookDao {
+        void addBook(Book b);
+    }
+
+    public class BookDaoJdbcImpl implements BookDao {
+        public   void addBook(Book b) { ...}
+    }
+
+     public class BookDaoFileImpl implements BookDao {
+        public   void addBook(Book b) { ...}
+    }
+
+    public class AppService {
+        private BookDao bookDao;
+
+        public void setDao(BookDao dao) {
+            this.bookDao = dao;
+        }
+
+        public void insert(Book b) {
+            this.bookDao.addBook(b);
+        }
+    }
+
+beans.xml
+<bean id="jdbc" class="pkg.BookDaoJdbcImpl" />
+<bean id="file" class="pkg.BookDaoFileImpl" />
+<bean id="service" class="pkg.AppService" >
+    <property name="dao" ref="jdbc" /> <!-- service.setDao(jdbc) -->
+</bean>
+
+ApplicationContext ctx = new ClasspathXmlApplicationContext("beans.xml");
+
+AppService ser = ctx.getBean("service", AppService.class);
+
+```
+
+Annotations as metadata:
+Spring creates instances of classes which has one of these annoations at class-level:
+1) @Component
+2) @Repository
+https://github.com/spring-projects/spring-framework/blob/main/spring-jdbc/src/main/resources/org/springframework/jdbc/support/sql-error-codes.xml
+3) @Service
+4) @Controller
+5) @RestController
+6) @Configuration
+7) @ControllerAdvice
+
+Wiring can be done using:
+1) @Autowired
+2) @Inject
+3) Constructor DI
+
+ApplicationContext ctx = new AnnotationConfiglApplicationContext();
+-------
+
+Spring Boot framework --> framework on top of Spring Framework
+
+Spring boot 3.x is on Spring Framework 6.x
+Spring boot 2.x is on Spring Framework 5.x
+
+
+Spring Boot is highly opiniated framework, lots of configurations comes out of the box,
+it simplifies development
+* if we are building application to use database;
+ spring boot gives database connection pool
+
+* for web application development; it gives embedded tomcat container
+
+* for ORM; it configures Hibernate as ORM framework
+
+
+@SpringBootApplication is 3 in one:
+1) @Configuration
+2) @ComponentScan
+@ComponentScan(basePackage="com.adobe")
+3) @EnableAutoConfiguration [ opiniated]
+
+Spring Framework uses
+1) JavaAssit
+2) ByteBuddy
+
+for Bytecode instrumentation
+
+3) CGLib --> for Proxy object
 
 
