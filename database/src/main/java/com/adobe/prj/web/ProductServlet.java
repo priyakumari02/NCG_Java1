@@ -41,4 +41,21 @@ public class ProductServlet  extends HttpServlet  {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       Product p = Product.builder()
+               .name(req.getParameter("name"))
+               .price(Double.parseDouble(req.getParameter("price")))
+               .quantity(100)
+               .build();
+        ProductDao productDao = new ProductDaoJdbcImpl();
+        try {
+            productDao.addProduct(p);
+            resp.sendRedirect("index.jsp?msg=Product added Successfully!!!");
+        } catch (DaoException e) {
+//            throw new RuntimeException(e);
+            resp.sendRedirect("index.jsp?msg="+e.getMessage());
+        }
+    }
 }
