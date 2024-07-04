@@ -432,33 +432,5 @@ mysql> insert into products (name, price, quantity) values ('Reynold' , 40.00, 1
 
 mysql> select * from products;
 ```
-public interface UserDao {
-    void register(User u) throws PersistenceException;
-}
 
-public class UserDaoMongoImpl implements UserDao {
-
-    public void register(User u) throws PersistenceException {
-    try {
-        // code
-    }catch(MongodbException ex) {
-        throw new PeristenceException("user with email already exists!!!", ex);
-    }
-    }
-}
-
-
-
-
-client:
-
-try {
-    User u = ...
-    userDao.register(u);
-} catch(PersistenceException ex) {
-    ex.printStackTrace();
-    sout(ex.getMessage());
-}
-
-
-
+Day 3:
