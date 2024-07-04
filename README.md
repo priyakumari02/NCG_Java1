@@ -639,3 +639,8 @@ OR
 
 java jar app.jar --spring.profiles.active=prod
 ```
+
+Factory methods
+* need to manage 3rd party objects in Spring Container
+* 3rd party classes won't have any of the above 7 annotations
+
