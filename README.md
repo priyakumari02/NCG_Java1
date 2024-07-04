@@ -434,3 +434,51 @@ mysql> select * from products;
 ```
 
 Day 3:
+
+Convert it into Web application
+
+Mapping
+
+/login       LoginServlet
+/register   RegistrationServlet
+/products   ProductServlet
+
+
+http://server:port/products
+
+Deployment descriptor --> web.xml 
+
+```
+<servlet>
+    <servlet-name>productservlet</servlet-name>
+    <servlet-class> pkg.ProductServlet</servlet-class>
+</servlet>
+
+<url-mapping>
+      <servlet-name>productservlet</servlet-name>
+      <url-pattern>/products</url-pattern>
+</url-mapping>
+
+HTTP Methods:
+GET, POST, PUT, DELETE, PATCH ,..
+
+@WebServlet("/products")
+public class ProductServlet extends HttpServlet {
+
+    public void doGet(HttpServletRequest req, HttpServletResponse res) {
+
+    }
+
+    public void doPost(HttpServletRequest req, HttpServletResponse res) {
+        
+    }
+}
+```
+CRUD operation
+GET --> READ
+POST --> CREATE
+PUT --> UPDATE
+DELETE --> DELETE
+
+Servlet Containers: Tomcat, Jetty , Netty
+
