@@ -15,6 +15,15 @@ public class OrderService {
     private  final ProductRepository productRepo;
     private  final CustomerRepository customerRepo;
 
+    public long getProductCount() {
+        return productRepo.count();
+    }
+
+    public long getCustomerCount() {
+        return customerRepo.count();
+    }
+
+
     public List<Product> getProducts() {
         return productRepo.findAll();
     }
