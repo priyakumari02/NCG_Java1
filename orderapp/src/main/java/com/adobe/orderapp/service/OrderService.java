@@ -21,7 +21,14 @@ import java.util.Optional;
 public class OrderService {
     private  final ProductRepository productRepo;
     private  final CustomerRepository customerRepo;
+
     private final OrderRepo orderRepo;
+
+    @Transactional
+    public Product updatePrice(int id, double price) {
+        productRepo.updatePrice(id,price);
+        return productRepo.findById(id).get();
+    }
 
     public List<OrderReport> getReport() {
         return orderRepo.getReport();

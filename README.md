@@ -772,20 +772,37 @@ Default fetching strategies:
 
 =======
 
-JP-QL --> Java Persistence Query Language
+Task:
 
-SQL
+```
+Vehicle Rental application
 
-select email, fname from customers
+customers table is same;
 
-
-
-select email, firstName from Customer
-
-
+vehicles
+REG_NO | cost_per_day | fuel_type | type 
 
 
+rentals
+id | rent_from | rent_to | customer_fk | vehicle_fk
 
+
+
+Steps:
+1) insert customers
+2) insert vehicles
+3) rent a vehicle
+id | rent_from  | rent_to | customer_fk         | vehicle_fk
+1    4 JUL 2024   NULL      abc@gmail.com        DA 12 A 2345
+
+4) return a vehicle
+id | rent_from  | rent_to       | customer_fk         | vehicle_fk
+1    4 JUL 2024   5 JUL 2024      abc@gmail.com        DA 12 A 2345
+
+
+5) print rental cost of the vehicle
+
+```
 
 
 
