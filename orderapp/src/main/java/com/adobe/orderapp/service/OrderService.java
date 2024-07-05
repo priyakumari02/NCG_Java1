@@ -1,5 +1,6 @@
 package com.adobe.orderapp.service;
 
+import com.adobe.orderapp.entity.Customer;
 import com.adobe.orderapp.entity.Product;
 import com.adobe.orderapp.repo.CustomerRepository;
 import com.adobe.orderapp.repo.ProductRepository;
@@ -23,6 +24,13 @@ public class OrderService {
         return customerRepo.count();
     }
 
+    public Customer saveCustomer(Customer c) {
+        return customerRepo.save(c);
+    }
+
+    public List<Customer> getCustomers() {
+        return customerRepo.findAll();
+    }
 
     public List<Product> getProducts() {
         return productRepo.findAll();
