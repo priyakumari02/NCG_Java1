@@ -644,3 +644,79 @@ Factory methods
 * need to manage 3rd party objects in Spring Container
 * 3rd party classes won't have any of the above 7 annotations
 
+==========
+
+Day 4
+
+ORM Framework
+Object Relational Mapping
+ORM frameworks:
+Hibernate, Toplink, KODO, JDO, OpenJPA
+
+JPA is a specification for ORMs
+Why ORMs?
+1) Database independence.
+2) Faster development. With ORM, engineers omit writing boilerplate SQL commands
+
+```
+
+@Configuration
+public class AppConfig {
+
+    // pool of db connection
+    @Bean
+    public DataSource getDataSource() {
+        try {
+            ComboPooledDataSource cpds = new ComboPooledDataSource();
+            cpds.setDriverClass("com.mysql.cj.jdbc.Driver"); //loads the jdbc driver
+            cpds.setJdbcUrl("jdbc:mysql://localhost:3306/NCG_JAVA");
+            cpds.setUser("root");
+            cpds.setPassword("Welcome123");
+            cpds.setMinPoolSize(5);
+            cpds.setAcquireIncrement(5);
+            cpds.setMaxPoolSize(20);
+            return cpds;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return  null;
+        }
+    }
+
+    @Bean
+    public EntityManagerFactory getEmf(DataSource ds) {
+        LocalContainerEntityManagerFactory emf = new LocalContainerEntityManagerFactory(ds);
+        emf.setJpaVendor(new HibernateJpaVendor());
+        emf.setPakagesToScan("com.adobe.prj.entity");
+        ..
+        return emf;
+
+    }
+}
+
+@Repository
+public class ProductDaoJdbcImpl implements ProductDao {
+    @PersistenceContext
+    EntityManager em;
+
+    public void addProduct(Product p) {
+        em.persist(p);
+    }
+
+    public Product getProduct(int id) {
+        return em.findById(id, Product.class);
+    }
+}
+
+```
+
+https://docs.spring.io/spring-boot/appendix/application-properties/index.html
+
+1) spring.jpa.hibernate.ddl-auto=update
+create tables if not exist, if exists map to existing table, if required alter columns
+
+2) spring.jpa.hibernate.ddl-auto=create
+create tables on application start, drop tables when application terminates
+
+3) spring.jpa.hibernate.ddl-auto=verify
+map to existing table, can't create new ones or alter them
+
