@@ -720,7 +720,52 @@ create tables on application start, drop tables when application terminates
 3) spring.jpa.hibernate.ddl-auto=verify
 map to existing table, can't create new ones or alter them
 
-docker exec -it local-mysql bash
+1 order has 4 items:
+```
+save:
+orderDao.save(order);
+itemDao.save(item1);
+itemDao.save(item2);
+itemDao.save(item3);
+itemDao.save(item4);
 
-# mysql -u root -p
+delete:
+orderDao.delete(order);
+itemDao.delete(item1);
+itemDao.delete(item2);
+itemDao.delete(item3);
+itemDao.delete(item4);
+
+Cascade:
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinColumn(name="order_fk")
+  private List<LineItem> items = new ArrayList<>();
+
+save:
+orderDao.save(order);
+delete:
+orderDao.delete(order);
+```
+
+EAGER Fetch and Lazy Loading
+```
+By default one-to-many is LAZY loading
+LAZY loading:
+Order order = orderDao.findById(1, Order.class);
+select * from orders where id = 1;
+
+
+EAGER loading:
+@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+@JoinColumn(name="order_fk")
+private List<LineItem> items = new ArrayList<>();
+Order order = orderDao.findById(1, Order.class);
+select * from orders where id = 1;
+select * from items where order_fk = 1;
+```
+
+
+
+
+
 

@@ -27,5 +27,4 @@ public class LineItem {
 
     private double amount;
 
-
 }

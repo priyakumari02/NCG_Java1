@@ -23,13 +23,15 @@ public class Order {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="order_date")
-    private Date orderDate;
+    private Date orderDate = new Date();
 
     @ManyToOne
     @JoinColumn(name = "customer_fk")
     private Customer customer;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="order_fk")
     private List<LineItem> items = new ArrayList<>();
+
+    private double total;
 }
