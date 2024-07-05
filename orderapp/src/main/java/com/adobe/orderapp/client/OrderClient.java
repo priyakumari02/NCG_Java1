@@ -1,5 +1,6 @@
 package com.adobe.orderapp.client;
 
+import com.adobe.orderapp.dto.OrderReport;
 import com.adobe.orderapp.entity.Customer;
 import com.adobe.orderapp.entity.LineItem;
 import com.adobe.orderapp.entity.Order;
@@ -18,13 +19,20 @@ public class OrderClient implements CommandLineRunner {
     private final OrderService service;
     @Override
     public void run(String... args) throws Exception {
-        checkout();
-       // printOrders();
+        //checkout();
+        // printOrders();
+        printReport();
+    }
+
+    private void printReport() {
+        for(OrderReport report: service.getReport()) {
+            System.out.println(report);
+        }
     }
 
     private void printOrders() {
         for(Order o : service.getOrders()){
-            System.out.println(o);
+            System.out.println(o.getOrderDate() +", " + o.getTotal() + " : " + o.getCustomer().getFirstName());
             for (LineItem item : o.getItems()) {
                 System.out.println(item);
             }

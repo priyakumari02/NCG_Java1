@@ -764,6 +764,27 @@ select * from orders where id = 1;
 select * from items where order_fk = 1;
 ```
 
+Default fetching strategies:
+1) manyToOne --> EAGER fetch
+2) oneToOne --> EAGER fetch
+3) OneToMany --> LAZY loading
+4) ManyToMany --> LAZY loading
+
+=======
+
+JP-QL --> Java Persistence Query Language
+
+SQL
+
+select email, fname from customers
+
+
+
+select email, firstName from Customer
+
+
+
+
 
 
 

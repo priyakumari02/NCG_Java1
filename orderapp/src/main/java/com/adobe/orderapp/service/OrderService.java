@@ -1,5 +1,6 @@
 package com.adobe.orderapp.service;
 
+import com.adobe.orderapp.dto.OrderReport;
 import com.adobe.orderapp.entity.Customer;
 import com.adobe.orderapp.entity.LineItem;
 import com.adobe.orderapp.entity.Order;
@@ -21,6 +22,10 @@ public class OrderService {
     private  final ProductRepository productRepo;
     private  final CustomerRepository customerRepo;
     private final OrderRepo orderRepo;
+
+    public List<OrderReport> getReport() {
+        return orderRepo.getReport();
+    }
     /*
     oid is auto increment
     order_Date ==> system date
