@@ -26,8 +26,12 @@ public class OrderService {
     public Product getProductById(int id) {
         Optional<Product> opt = productRepo.findById(id);
         if(opt.isPresent()) {
-            return opt.get();
+            return opt.get(); // return Product
         }
         return null;
+    }
+
+    public List<Product> byRange(double low, double high) {
+        return productRepo.findByPriceBetween(low, high);
     }
 }
