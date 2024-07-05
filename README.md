@@ -720,4 +720,7 @@ create tables on application start, drop tables when application terminates
 3) spring.jpa.hibernate.ddl-auto=verify
 map to existing table, can't create new ones or alter them
 
+docker exec -it local-mysql bash
+
+# mysql -u root -p
 
