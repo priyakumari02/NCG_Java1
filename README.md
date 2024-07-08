@@ -1038,5 +1038,20 @@ pom.xml
 ProductController.java
 SwaggerConfig.java
 
+==========
 
+Spring has String to primitive data type conversions
+String --> int
+String --> double
+
+http://localhost:8080/api/dateformat?date=12-10-2012
+
+@RequestMapping(value = "/dateformat",method = RequestMethod.POST)
+    public Date dateex(@DateTimeFormat(pattern = "dd-MM-yyyy") @RequestParam(value = "date")Date date) {        
+
+Complete Vehicle Rental --> RESTful Web application
+Change System date, instead explicitly rent based on provided dates
+1) rentFrom, rentTo
+2) just pass rentForm
+3) later return it
 
