@@ -794,6 +794,7 @@ Steps:
 3) rent a vehicle
 id | rent_from  | rent_to | customer_fk         | vehicle_fk
 1    4 JUL 2024   NULL      abc@gmail.com        DA 12 A 2345
+2     4 JUL 2024    NULL    abc@gmail.com        KA 50 A 1214
 
 4) return a vehicle
 id | rent_from  | rent_to       | customer_fk         | vehicle_fk
@@ -803,7 +804,170 @@ id | rent_from  | rent_to       | customer_fk         | vehicle_fk
 5) print rental cost of the vehicle
 
 ```
+SELECT *
+FROM vehicles v
+WHERE 
+    reg_no = 'DA23A9013'
+    AND NOT EXISTS (
+        SELECT 1
+        FROM rentals r
+        WHERE 
+            r.vehicle_fk = v.reg_no
+            AND '2024-03-27' <= r.rent_to_date
+            AND '2024-03-30' >= r.rent_from_date
+    )
+```
+
+Day 5:
+
+```
+@Entity
+public class Employee {
+    @Id
+    String email;
+
+    // bi-directional
+    @OneToOne(mappedby = "employee")
+    Laptop laptop;
+}
+
+@Entity
+public class Laptop {
+    @Id
+    String serialNo;
+
+    @OneToOne
+    @JoinColumn(name="employee_fk")
+    Employee employee;
+}
+
+employees
+email | hire_date | first_name
+
+
+laptop
+serail_no | make | .... | employee_fk
+
+----
+
+class Customer {
+
+    // bi-directional
+    @OneToMany(mappedBy="customer")
+    List<Order> orders  = new ArrayList<>();
+    
+}
+
+class Order {
+
+    @ManyToOne
+    @JoinColumn(name="customer_fk")
+    Customer customer;
+}
+```
+
+ManyToMany is a rare thing
+
+```
+students
+
+sid | name 
+
+subjects
+
+subid | name 
+
+students_subjects [link table]
+
+sid | subid  
+
+
+changes to 
+
+sid | subid | start_date | end_date
+
+to add extra fields
+
+Student 1 ---> *  StudentSubject * ---> 1  Subject
+
+```
+
+Building RESTful Webservices
+
+* Resource: database table , files , printer
+
+* Representation : state of the resource at any given point of time
+
+* ContentNegotiation: serve representation in different format to the client based on client http request header
+Accept: text/xml
+or
+Accept: application/json
+
+or CSV, atom , RSS feed, ...
+
+Charactersitics of RESTful
+1) Uniform Resource Identifier
+
+http://localhost:8080/api/products
+
+2) Stateless
+3) Cacheable
+4) Layered
+
+Resources --> Plural nouns
+actions --> HTTP verbs
+
+CRUD operations
+
+GET --> READ
+POST --> CREATE
+PUT/ PATCH --> Update
+DELETE -> DELETE
+
+@Controller --> Traditional Web application --> Server Side Rendering [ server sends rendered view -> html / pdf]
+@RestController ---> ContentNegotiationHandler --> server different formats of represetnation of data.
+
+DispatcherServlet
+
+
+ProductController.java
+
+```
+@RestController
+@RequestMapping("api/products")
+@RequiredArgsConstructor
+public class ProductController {
+    private final OrderService service;
+
+    @GetMapping
+    public List<Product> getProducts() {
+        return service.getProducts();
+    }
+
+    @PostMapping
+    public Product addProduct(@RequestBody Product p) {
+        return service.addProduct(p);
+    }
+}
+
+
+```
+
+ContentNegotiationHandler
+
+JSON --> Jackson [default], GSON , Jettison, Moxy
+
+XML --> JAXB , Jackson XML format, ...
 
 
 
+```
+POST  http://localhost:8080/api/products
+Content-type: application/json
 
+{
+    "name": "Oppo",
+    "price": 24000.00,
+    "quantity": 100
+}
+``
