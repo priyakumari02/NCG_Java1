@@ -985,6 +985,19 @@ QueryParameters ? --> filtered / subset of records
 GET http://localhost:8080/api/products?category=mobile
 GET http://localhost:8080/api/products?low=5000&high=20000
 ```
+Testing:
+```
+
+import static org.mockito.Mockito.*;
+import static org.hamcrest.Matchers.*;
+//import static org.hamcrest.CoreMatchers.*;
+import  static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import  static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+//@WebMvcTest(ProductController.class)
+@WebAppConfiguration
+@AutoConfigureMockMvc
+@SpringBootTest(classes = ShopappApplication.class)
+```
 
 Task:
 ```
@@ -992,6 +1005,18 @@ PUT http://localhost:8080/api/products/3
 specifies that the product with id 3 has to be mutated
 payload should contain new product data which is used to update
 ```
+
+Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.adobe.orderapp.entity.Product com.adobe.orderapp.api.ProductController.addProduct(com.adobe.orderapp.entity.Product) with 3 errors: 
+
+[Field error in object 'product' on field 'quantity': rejected value [0]; codes [Min.product.quantity,Min.quantity,Min.int,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.quantity,quantity]; arguments []; default message [quantity],1]; 
+default message [Quantity entered 0 has to be more than 1]] 
+
+[Field error in object 'product' on field 'price': rejected value [0.5]; codes [Min.product.price,Min.price,Min.double,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.price,price]; arguments []; default message [price],10]; 
+default message [Price entered 0.5 has to be more than 10]] 
+
+[Field error in object 'product' on field 'name': rejected value []; codes [NotBlank.product.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.name,name]; arguments []; 
+default message [name]]; default message [Name is required]] ]
+
 
 
 
