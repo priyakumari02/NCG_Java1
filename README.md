@@ -971,3 +971,6 @@ Content-type: application/json
     "quantity": 100
 }
 ``
+
+Install POSTMAN for testing RESTful Endpoints
+

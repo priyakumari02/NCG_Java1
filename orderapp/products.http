@@ -1,0 +1,24 @@
+@name = "Get all products"
+
+###
+GET http://localhost:8080/api/products
+Accept: application/json
+
+@name= Get product by ID
+###
+GET http://localhost:8080/api/products/2
+Accept: application/json
+
+
+@name = Insert a Product
+###
+POST http://localhost:8080/api/products
+Accept: application/json
+Content-type: application/json
+
+{
+"name": "American Tourister",
+"price": 2500.50,
+"quantity": 100
+}
+
