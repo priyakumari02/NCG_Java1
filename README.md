@@ -1006,6 +1006,9 @@ specifies that the product with id 3 has to be mutated
 payload should contain new product data which is used to update
 ```
 
+Validation Exceptions:
+```
+
 Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.adobe.orderapp.entity.Product com.adobe.orderapp.api.ProductController.addProduct(com.adobe.orderapp.entity.Product) with 3 errors: 
 
 [Field error in object 'product' on field 'quantity': rejected value [0]; codes [Min.product.quantity,Min.quantity,Min.int,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.quantity,quantity]; arguments []; default message [quantity],1]; 
@@ -1017,7 +1020,23 @@ default message [Price entered 0.5 has to be more than 10]]
 [Field error in object 'product' on field 'name': rejected value []; codes [NotBlank.product.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.name,name]; arguments []; 
 default message [name]]; default message [Name is required]] ]
 
+```
 
+Documentation
+1) RAML
+https://raml.org/
+
+2) openAPI --> Swagger
+https://springdoc.org/
+
+http://localhost:8080/swagger-ui/index.html
+
+http://localhost:8080/v3/api-docs
+
+
+pom.xml
+ProductController.java
+SwaggerConfig.java
 
 
 
