@@ -22,3 +22,7 @@ Content-Type: application/json
     }
   ]
 }
+
+### @name="Get orders by date"
+GET http://localhost:8080/api/orders?date=2024-07-08
+Accept: application/json

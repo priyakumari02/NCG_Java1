@@ -13,6 +13,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -67,7 +68,9 @@ public class OrderService {
         return  orderRepo.findAll();
     }
 
-
+    public List<Order> getOrderByDate(LocalDate date) {
+        return orderRepo.getReportByDate(date);
+    }
     public long getProductCount() {
         return productRepo.count();
     }
