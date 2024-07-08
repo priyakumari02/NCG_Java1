@@ -1,17 +1,19 @@
-@name = "Get all products"
 
-###
+### @name = "Get all products"
 GET http://localhost:8080/api/products
 Accept: application/json
 
-@name= Get product by ID
-###
+### @name = "Get all products by price range"
+GET http://localhost:8080/api/products?low=500&high=20000
+Accept: application/json
+
+### @name= Get product by ID
 GET http://localhost:8080/api/products/2
 Accept: application/json
 
 
-@name = Insert a Product
-###
+
+### @name = Insert a Product
 POST http://localhost:8080/api/products
 Accept: application/json
 Content-type: application/json

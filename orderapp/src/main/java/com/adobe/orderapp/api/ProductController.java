@@ -15,9 +15,15 @@ public class ProductController {
     private final OrderService service;
 
     // GET http://localhost:8080/api/products
+    // GET http://localhost:8080/api/products?low=5000&high=20000
     @GetMapping
-    public List<Product> getProducts() {
-        return service.getProducts();
+    public List<Product> getProducts(@RequestParam(name = "low", defaultValue = "0.0") double low,
+                                     @RequestParam(name = "high", defaultValue = "0.0") double high) {
+        if(low == 0.0 && high == 0.0) {
+            return service.getProducts();
+        } else  {
+            return service.byRange(low, high);
+        }
     }
 
     // GET http://localhost:8080/api/products/3

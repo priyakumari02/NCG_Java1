@@ -974,3 +974,25 @@ Content-type: application/json
 
 Install POSTMAN for testing RESTful Endpoints
 
+PathParameter / --> based on ID @PathVariable
+```
+GET http://localhost:8080/api/products/4
+http://localhost:8080/api/customers/raj@gmail.com/orders
+```
+
+QueryParameters ? --> filtered / subset of records
+```
+GET http://localhost:8080/api/products?category=mobile
+GET http://localhost:8080/api/products?low=5000&high=20000
+```
+
+Task:
+```
+PUT http://localhost:8080/api/products/3
+specifies that the product with id 3 has to be mutated
+payload should contain new product data which is used to update
+```
+
+
+
+
