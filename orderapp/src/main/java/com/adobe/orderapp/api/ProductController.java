@@ -1,6 +1,7 @@
 package com.adobe.orderapp.api;
 
 import com.adobe.orderapp.entity.Product;
+import com.adobe.orderapp.exception.ResourceNotFoundException;
 import com.adobe.orderapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class ProductController {
 
     // GET http://localhost:8080/api/products/3
     @GetMapping("/{id}")
-    public Product getProduct(@PathVariable("id") int id) {
+    public Product getProduct(@PathVariable("id") int id) throws ResourceNotFoundException {
         return service.getProductById(id);
     }
 

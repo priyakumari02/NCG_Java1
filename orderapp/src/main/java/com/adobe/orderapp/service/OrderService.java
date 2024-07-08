@@ -5,6 +5,7 @@ import com.adobe.orderapp.entity.Customer;
 import com.adobe.orderapp.entity.LineItem;
 import com.adobe.orderapp.entity.Order;
 import com.adobe.orderapp.entity.Product;
+import com.adobe.orderapp.exception.ResourceNotFoundException;
 import com.adobe.orderapp.repo.CustomerRepository;
 import com.adobe.orderapp.repo.OrderRepo;
 import com.adobe.orderapp.repo.ProductRepository;
@@ -91,12 +92,12 @@ public class OrderService {
         return productRepo.save(p);
     }
 
-    public Product getProductById(int id) {
+    public Product getProductById(int id) throws ResourceNotFoundException {
         Optional<Product> opt = productRepo.findById(id);
         if(opt.isPresent()) {
             return opt.get(); // return Product
         }
-        return null;
+        throw new ResourceNotFoundException("Product with id " + id + " doesn't exist!!!");
     }
 
     public List<Product> byRange(double low, double high) {
