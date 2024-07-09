@@ -44,7 +44,7 @@ public class MovieService {
     public void assignActorToMovie(int movieId, int actorId) {
         Movie m = movieDao.findById(movieId).get();
         Actor actor = actorDao.findById(actorId).get();
-        m.getActors().add(actor); // Dirty Checking
+        m.getActors().add(actor); // Dirty Checking -> UPDATE
     }
 
     public Actor saveActor(Actor actor) {
