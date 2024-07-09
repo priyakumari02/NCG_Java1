@@ -1120,7 +1120,7 @@ package com.adobe.orderapp.util;
 
 public class ArrayUtil {
     public static final double PI = 3.14159;
-    
+
     public static int getMax(int[] elems) {
         int max = elems[0];
         for(int elem : elems) {
@@ -1153,3 +1153,10 @@ public class SomeClass {
 }
 
 ```
+
+In mini project at least Controllers has to be tested --> 50%
+
+No need to test Service classes.
+
+
+
