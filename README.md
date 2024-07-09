@@ -1186,3 +1186,16 @@ Using generated security password: 263db8f9-3207-40d6-85b8-c9bf01756b0a
 http://localhost:8080/logout
 
 
+InMemory    Jdbc        Ldap
+
+   protected void successfulAuthentication(HttpServletRequest request, 
+   HttpServletResponse response, FilterChain chain, 
+   Authentication authResult) throws IOException, ServletException {
+ 
+ConversationalState of client is managed used JESSIONID
+
+UsernamePasswordAuthenticationFilter
+
+
+
+
