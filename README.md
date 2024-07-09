@@ -1113,3 +1113,43 @@ hasItemInArray - test an array contains an element
 
 4) Mockito --> Mocking dependency
 Alternate we have : EasyMock, JMock, ...
+
+static imports
+```
+package com.adobe.orderapp.util;
+
+public class ArrayUtil {
+    public static final double PI = 3.14159;
+    
+    public static int getMax(int[] elems) {
+        int max = elems[0];
+        for(int elem : elems) {
+            if(elem > max) {
+                max = elem;
+            }
+        }
+        return  max;
+    }
+
+    public static void sort(int[] elems) {
+        for (int i = 0; i < elems.length; i++) {
+            for (int j = i+1; j < elems.length; j++) {
+                if(elems[i] > elems[j]) {
+                    int swap = elems[i];
+                    elems[i] = elems[j];
+                    elems[j] = swap;
+                }
+            }
+        }
+    }
+}
+
+
+other class
+
+import static pkg.ArrayUtil.PI;
+public class SomeClass {
+
+}
+
+```
