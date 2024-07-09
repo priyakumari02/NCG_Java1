@@ -1268,8 +1268,15 @@ api
 cfg:
 SecurityConfiguration
 
+application.properties
+token.signing.key=413F4428472B4B6250655368566D5970337336763979244226452948404D6351
+
 
 Http Header
 Authorization: Bearer <<token>>
 
+
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWlsYUBnbWFpbC5jb20iLCJpYXQiOjE3MjA1MjAyMzYsImV4cCI6MTcyMDUyMTY3Niwicm9sZXMiOlsiUk9MRV9VU0VSIl19.fzCgJw6R7g_hHLh_K1wiO5CMpCyj8qFoqafH6jTwQVU"
+}
 

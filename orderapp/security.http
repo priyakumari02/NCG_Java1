@@ -1,0 +1,39 @@
+### @name="Register ADMIN"
+POST http://localhost:8080/api/auth/signup
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstName": "harry",
+  "lastName": "potter" ,
+  "email": "harry@gmail.com",
+   "password":  "secret123",
+  "role": "ROLE_ADMIN"
+}
+
+### @name="Register USER"
+POST http://localhost:8080/api/auth/signup
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstName": "Emila",
+  "lastName": "Watson" ,
+  "email": "emila@gmail.com",
+  "password":  "secret123"
+}
+
+### @name="USER login"
+POST http://localhost:8080/api/auth/signin
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "emila@gmail.com",
+  "password":  "secret123"
+}
+
+### name="Access protected resource"
+GET http://localhost:8080/api/products
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWlsYUBnbWFpbC5jb20iLCJpYXQiOjE3MjA1MjAyMzYsImV4cCI6MTcyMDUyMTY3Niwicm9sZXMiOlsiUk9MRV9VU0VSIl19.fzCgJw6R7g_hHLh_K1wiO5CMpCyj8qFoqafH6jTwQVU
