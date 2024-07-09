@@ -20,7 +20,7 @@ public class OrderController {
 
     // GET http://localhost:8080/api/orders?date=2024-07-05
     @GetMapping
-    public List<Order> getOrders(@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(name="date")LocalDate date) {
+    public List<Order> getOrders(@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(name="date" , required = false)LocalDate date) {
        if(date == null) {
            return service.getOrders();
        } else {

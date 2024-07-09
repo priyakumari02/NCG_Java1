@@ -1158,5 +1158,31 @@ In mini project at least Controllers has to be tested --> 50%
 
 No need to test Service classes.
 
+java/main/resourcs/schema.sql
+java/main/resourcs/data.sql
+
+Whenever Spring boot application starts
+spring.sql.init.mode=always
+1) executes schema.sql --> contains DDL like create, alter, drop
+2) data.sql --> contains DML --> INSERT, DELETE , UPDATE --> to populate the data
+
+==================
+
+Spring Security
+
+Authentication and Authorization
+
+```
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+``
+
+By adding above dependency all resources are protected, creates login and logout pages,
+creates one user with username ="user" and password=<<generated>>
+
+Using generated security password: 263db8f9-3207-40d6-85b8-c9bf01756b0a
+http://localhost:8080/logout
 
 
