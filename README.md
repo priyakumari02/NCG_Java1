@@ -1194,10 +1194,82 @@ InMemory    Jdbc        Ldap
  
 ConversationalState of client is managed used JESSIONID
 
-UsernamePasswordAuthenticationFilter
+JWT --> JSON Web Token
+
+RESTful has to be Stateless. no to JSESSIONID
+
+Why?
+1) not all clients knows how to handle cookies
+2) difficult when we configure clusters
+
+```
+jwt token:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.
+SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+Header:
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+
+Payload:
+{
+    "sub": "anna@gmail.com",
+    "iat": 989328232,
+    "exp": 999999999,
+    "iss": "https://secure.adobe.com",
+    "authorities": "ADMIN","GUEST"
+}
+
+SIGNATURE:
+HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  topsecretsaltvaluetobeused
+)
+
+Keytool / OpenSSL
+Private Key --> to generate token
+public key --> to validate token
+```
+JWT:
+```
+   <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+```
+
+Code:
+entities:
+1) User --> Role
+dto:
+1) SignUpRequest --> Registration
+2) SigninRequest --> login
+3) JwtAuthenticationResponse --> sending token
+
+service:
+1) UserDetailsServiceImpl -->  instance of UserDetailsService --> to find user based on Email
+2) JwtService --> generate and validate token
+3) AuthenticationService --> register and login
+
+api
+1) AuthenticationController --> login and register
+2) JwtAuthenticationFilter --> added along with existing UsernamePasswordAuthenticationFilter
+
+cfg:
+SecurityConfiguration
 
 
-
-
+Http Header
+Authorization: Bearer <<token>>
 
 
