@@ -18,7 +18,7 @@ public class MovieService {
 
     @Transactional
     public void addMovieWithActors(Movie movie) {
-        movieDao.save(movie);
+        movieDao.save(movie); //Cascade saves actors also
     }
 
 
