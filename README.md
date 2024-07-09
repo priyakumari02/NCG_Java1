@@ -1098,3 +1098,18 @@ TEST_ID  | DESCRIPTION | SAMPLE INPUT | EXPECTED RESULT | RESULT
 * Run tests again until it passes
 
 Unit Testing Framework --> JUnit <<default added by Spring boot>>/TestNG 
+
+
+=======
+Spring boot testing includes:
+1) JUnit-Jupiter
+2) jsonPath [ https://jsonpath.com/] $.phoneNumbers[0].type, $, $.firstName, ...
+3) Hamcrest [https://hamcrest.org/JavaHamcrest/tutorial]
+Collections
+array - test an array’s elements against an array of matchers
+hasEntry, hasKey, hasValue - test a map contains an entry, key or value
+hasItem, hasItems - test a collection contains elements
+hasItemInArray - test an array contains an element
+
+4) Mockito --> Mocking dependency
+Alternate we have : EasyMock, JMock, ...
