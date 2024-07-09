@@ -1061,5 +1061,40 @@ Testing and Security
 
 Day 6
 
+ManyToMany:
+needs link table with only foreign keys, should not have any extra columns, if extra columns are required convert that into
+oneToMany and ManyToOne by creating an extra assoction table
+```
+    1                   *                           1
+Employee --->       EmployeeProject  <---        Project
+
 movies_actors
 mid | aid
+```
+
+Testing:
+1) Unit Testing
+2) Integration Testing
+3) E2E testing
+4) UAT
+
+
+Unit Testing 
+Unit testing is the process where you test the smallest functional unit of code.
+Don't write main or client to test the code ==> needs assertions with data in console
+
+TDD
+
+public int getMax(int[] elems) {
+    // code
+}
+
+Write a test for this method --> TCER TestCaseExpectedResult
+
+TEST_ID  | DESCRIPTION | SAMPLE INPUT | EXPECTED RESULT | RESULT
+
+* Test fails
+* complete the method
+* Run tests again until it passes
+
+Unit Testing Framework --> JUnit <<default added by Spring boot>>/TestNG 
